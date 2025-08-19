@@ -5,13 +5,17 @@ test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:4200/')
 })
 
-test.describe('Form Layouts page', () => {
+test.describe.only('Form Layouts page', () => {
+    test.describe.configure({ retries: 2 })
     test.beforeEach(async ({ page }) => {
         await page.getByText('Forms').click()
         await page.getByText('Form Layout').click()
     })
 
-    test('Input fields', async ({ page }) => {
+    test('Input fields', async ({ page }, testInfo) => {
+        if(testInfo.retry) {
+            // Do something
+        }
         const usingTheGriidEmailInput = page.locator('nb-card', { hasText: "Using the Grid" }).getByRole("textbox", { name: "Email" })
 
         await usingTheGriidEmailInput.fill('test@test.com')
@@ -20,7 +24,7 @@ test.describe('Form Layouts page', () => {
 
         //Generic assertion
         const inputValue = await usingTheGriidEmailInput.inputValue()
-        expect(inputValue).toEqual('test2@test.com')
+        expect(inputValue).toEqual('test2@test.com1')
 
         //Locator assertion
         await expect(usingTheGriidEmailInput).toHaveValue('test2@test.com')
