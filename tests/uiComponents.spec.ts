@@ -1,12 +1,15 @@
-import { InputModalityDetector } from '@angular/cdk/a11y';
 import { expect, test } from '@playwright/test';
+
+//test.describe.configure({mode: 'parallel'})
 
 test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:4200/')
 })
 
-test.describe.only('Form Layouts page', () => {
+test.describe/*.parallel*/('Form Layouts page', () => {
     test.describe.configure({ retries: 2 })
+    //test.describe.configure({mode: 'serial'}) // Con esta línea los tests correr en serie 1 a la vez y si uno falla el siguiente no corre
+
     test.beforeEach(async ({ page }) => {
         await page.getByText('Forms').click()
         await page.getByText('Form Layout').click()
@@ -20,11 +23,11 @@ test.describe.only('Form Layouts page', () => {
 
         await usingTheGriidEmailInput.fill('test@test.com')
         await usingTheGriidEmailInput.clear()
-        await usingTheGriidEmailInput.pressSequentially('test2@test.com', { delay: 500 })
+        await usingTheGriidEmailInput.pressSequentially('test2@test.com')
 
         //Generic assertion
         const inputValue = await usingTheGriidEmailInput.inputValue()
-        expect(inputValue).toEqual('test2@test.com1')
+        expect(inputValue).toEqual('test2@test.com')
 
         //Locator assertion
         await expect(usingTheGriidEmailInput).toHaveValue('test2@test.com')
