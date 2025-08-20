@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 //test.describe.configure({mode: 'parallel'})
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:4200/')
+    await page.goto('/') // Pasando este caracter PW reconoce que tiene que usar la "baseURL" definida en el archivo de configuración
 })
 
 test.describe/*.parallel*/('Form Layouts page', () => {

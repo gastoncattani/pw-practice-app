@@ -3,7 +3,7 @@ import { PageManager } from '../page-objects/pageManager'
 import { faker } from '@faker-js/faker'
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:4200/')
+    await page.goto('/') // Pasando este caracter PW reconoce que tiene que usar la "baseURL" definida en el archivo de configuración
 })
 
 test('Navigate to from page', async ({ page }) => {
@@ -21,7 +21,7 @@ test('Parametrized methods', async ({ page }) => {
     const randomEmail = `${randomFullName.replace(' ','')}${faker.number.int(1000)}@test.com`
 
     await pm.navigateTo().formLayoutsPage()
-    await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com', 'Welcome1', 'Option 2')
+    await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption(process.env.USARNAME, process.env.PASSWORD, 'Option 2')
     await page.screenshot({path: 'screenshots/formsLayoutsPage.png'})
     const buffer = await page.screenshot()
     console.log(buffer.toString('base64'))

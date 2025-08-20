@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test.beforeAll(() => { })
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:4200/')
+    await page.goto('/') // Pasando este caracter PW reconoce que tiene que usar la "baseURL" definida en el archivo de configuración
     await page.getByText('Forms').click()
     await page.getByText('Form Layouts').click()
 })
