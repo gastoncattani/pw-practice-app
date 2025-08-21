@@ -51,4 +51,5 @@ node_modules/
 .env
 /allure-report/
 /allure-results/
-/tests/uiComponents.spec.ts-snapchots/
+/tests/uiComponents.spec.ts-snapshots/*.png
+
