@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto('/') // Pasando este caracter PW reconoce que tiene que usar la "baseURL" definida en el archivo de configuración
 })
 
-test.describe/*.parallel*/('Form Layouts page', () => {
+test.describe/*.parallel*/('Form Layouts page @smoke @block', () => {
     test.describe.configure({ retries: 2 })
     //test.describe.configure({mode: 'serial'}) // Con esta línea los tests correr en serie 1 a la vez y si uno falla el siguiente no corre
 

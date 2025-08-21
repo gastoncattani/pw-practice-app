@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto('/') // Pasando este caracter PW reconoce que tiene que usar la "baseURL" definida en el archivo de configuración
 })
 
-test('Navigate to from page', async ({ page }) => {
+test('Navigate to from page @smoke @regression', async ({ page }) => {
     const pm = new PageManager(page)
     await pm.navigateTo().formLayoutsPage()
     await pm.navigateTo().datePickerPage()
@@ -15,7 +15,7 @@ test('Navigate to from page', async ({ page }) => {
     await pm.navigateTo().tooltipPage()
 })
 
-test('Parametrized methods', async ({ page }) => {
+test('Parametrized methods @smoke', async ({ page }) => {
     const pm = new PageManager(page)
     const randomFullName = faker.person.fullName()
     const randomEmail = `${randomFullName.replace(' ','')}${faker.number.int(1000)}@test.com`
