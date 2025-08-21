@@ -72,7 +72,7 @@ This document lists the main commands run during development and testing, groupe
   Runs tests in debug mode, opening the Playwright Inspector for step-by-step debugging.
 
 - `npx playwright test --update-snapshots`  
-  Updates all snapshot expectations in your tests.
+  Updates all snapshot expectations in your Playwright tests. Use this when your UI or expected output has changed and you want to refresh the stored snapshots.
 
 - `npx playwright test --reporter=html`  
   Runs tests and generates an HTML report.
@@ -114,4 +114,4 @@ This document lists the main commands run during development and testing, groupe
 - Use `--config` to specify a custom Playwright configuration file for your test runs.
 - Use `codegen` to quickly generate test scripts by recording browser actions.
 - Use `doctor` to troubleshoot Playwright installation issues.
-- Allure commands are used for advanced reporting and require the Allure CLI.
+- Allure commands are used for advanced reporting and require
