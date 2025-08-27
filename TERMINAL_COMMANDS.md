@@ -18,6 +18,12 @@ This document lists the main commands run during development and testing, groupe
 - `brew install allure`  
   Installs the Allure CLI tool using Homebrew (Mac).
 
+- `npm install -D playwright@latest`  
+  Installs the latest version of Playwright as a development dependency.
+
+- `npx playwright install`  
+  Installs browser binaries required by Playwright (Chromium, Firefox, WebKit).
+
 ---
 
 ## **Playwright Test Execution**
@@ -61,9 +67,6 @@ This document lists the main commands run during development and testing, groupe
 ---
 
 ## **Playwright Utilities & Debugging**
-
-- `npx playwright install`  
-  Installs browser binaries required by Playwright (Chromium, Firefox, WebKit).
 
 - `npx playwright codegen <url>`  
   Opens the Playwright Codegen tool to record user actions and generate test scripts for the given URL.
