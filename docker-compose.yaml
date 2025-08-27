@@ -1,0 +1,27 @@
+# Specify docker-compose file version
+version: '3.8'
+
+# Define the services/containers to be run
+services:
+  # Service name for the Playwright tests
+  playwright-test:
+    # Name of the Docker image that will be created
+    image: playwright-test
+    
+    # Build configuration
+    build:
+      # Build context - current directory (where docker-compose.yaml is located)
+      context: .
+      # Path to the Dockerfile to use
+      dockerfile: ./Dockerfile
+    
+    # Command to run when container starts
+    # This executes the npm script that runs Playwright tests in Chrome
+    command: npm run pageObjects-chrome
+    
+    # Volume mappings to persist test results and reports
+    volumes:
+      # Map local playwright-report directory to container's report directory
+      - ./playwright-report/:/app/playwright-report
+      # Map local test-results directory to container's test results directory
+      - ./test-results/:/app/test-results

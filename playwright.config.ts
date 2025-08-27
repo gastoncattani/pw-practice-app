@@ -106,4 +106,9 @@ export default defineConfig<TestOptions>({
       }
     }
   ],
+
+  webServer: {
+    command: 'npm run start', /*Para que al correrlo por terminal no tenga que iniciar el server de la app*/
+    url: 'http://localhost:4200/'
+  }
 });
